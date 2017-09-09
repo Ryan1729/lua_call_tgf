@@ -75,8 +75,8 @@ fn main() {
 
         //function call
         if let Some(current_function) = function_stack.last() {
-            for match_ in function_call.find_iter(&line) {
-                edges.push((current_function.clone(), match_.as_str().to_owned()));
+            for captures in function_call.captures(&line) {
+                edges.push((current_function.clone(), captures[1].to_owned()));
             }
         }
 
